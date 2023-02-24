@@ -12,6 +12,12 @@
         stage('Build'){
             steps{
                 sh 'npm install' 
+                sh "yarn"
+            }
+        }
+        stage('Test'){
+            steps{
+                sh 'npm test' 
             }
         }
         stage('Deploy to Heroku'){
@@ -20,8 +26,12 @@
                sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/moringa-gallery-backend.git master'
                 }
            }
-       }
+        }
         
     }
-    
+    post {
+     failure {
+      emailext body: 'pipeline syntax', subject: 'jenkins', to: 'susan.mwangi3@gmail.com'
+     }
+    }
 }
