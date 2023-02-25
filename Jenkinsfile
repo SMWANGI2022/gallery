@@ -31,7 +31,7 @@
     }
     post {
      failure {
-      emailext body: 'pipeline syntax', subject: 'jenkins', to: 'susan.mwangi3@gmail.com'
+      emailext body: 'test failed', subject: 'jenkins', to: 'susan.mwangi3@gmail.com'
      }
     }
 }
